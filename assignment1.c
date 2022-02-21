@@ -13,6 +13,9 @@ typedef BOOL (*predicate)(int); /* predicates on integers */
 typedef void (*action)(); /* simple action, no return value */
 typedef void (*actionon)(int); /* act on an integer */
 
+
+//problem 2
+
 /* refer to programs written in class for more code and examples */
 
 // Basic linked-list encapsulation
@@ -59,6 +62,7 @@ list map(fun f, list m)
 } 
 
 
+//problem 1 - doubleup 
 list doubleup(fun f, list m)
 {
   list inner(list m, int stack)
@@ -66,10 +70,27 @@ list doubleup(fun f, list m)
     if(m==NIL) return stack;
     else return cons(car(m),cons(car(m),inner(cdr(m),stack)));
   }
-  return doubleup(inner(m,NIL));
+  return inner(m,NIL);
+}
+
+
+
+//problem 2 
+
+list foreach (list m, actionon f)
+{
+  list inner(list m, int stack)
+  {
+    if(m=NIL) return stack;
+    else return inner(cdr(m), cons(f(car(m)),stack));
+  }
+
+  return inner(m,Nil);
 }
 
 int main (int argc, char * argv[]){
+
+  list l = 
 
 
 
