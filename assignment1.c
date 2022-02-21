@@ -82,7 +82,7 @@ void output(int x)
 
 list foreach (list m, actionon f)
 {
-  list inner(list m, int stack)
+  list inner(list m, list stack)
   {
     if(m=NIL) return stack;
     else return inner(cdr(m), cons(f(car(m)),stack));
