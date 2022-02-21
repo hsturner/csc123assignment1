@@ -35,3 +35,15 @@ int car(list m) { return m->item; }
 list cdr(list m) { return m->next; }
 int cadr(list m) { return m->next->item; } // second item
 list cddr(list m) { return m->next->next; }
+
+
+
+
+int main (int argc, char * argv[]){
+
+
+
+
+
+  return 1;
+}
