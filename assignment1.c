@@ -65,7 +65,7 @@ list map(fun f, list m)
 //problem 1 - doubleup 
 list doubleup(list m)
 {
-  list inner(list m, int stack)
+  list inner(list m, list stack)
   {
     if(m==NIL) return stack;
     else return cons(car(m),cons(car(m),inner(cdr(m),stack)));
