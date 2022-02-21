@@ -67,7 +67,7 @@ list doubleup(list m)
 {
   list inner(list m, list stack)
   {
-    if(m==NIL) return stack;
+    if(m==NULL) return stack;
     else return cons(car(m),cons(car(m),inner(cdr(m),stack)));
   }
   return inner(m,NIL);
@@ -82,30 +82,28 @@ void output(int x)
 
 list foreach (list m, actionon f)
 {
-  list inner(list m, list stack)
+  if(m==NIL)
   {
-    if(m=NIL) return stack;
-    else
-    {
-      f(car(m));
-      return foreach(cdr(m),f);
-    }
+    printf("\n");
+    return NIL;
   }
-
-  return inner(m,NIL);
+  else
+  {
+    f(car(m));
+    return foreach(cdr(m),f);
+  }
 }
 
 int main ()
 {
+
+  printf("entering main\n");
   list l = cons(1,cons(2,cons(3,NIL)));
+
+  //printf("%d",car(l));
   list l1 = cons(1,cons(2,cons(3,NIL)));
   foreach(l,output);
-  doubleup(l1);
-
-
-
-
-
+  foreach(doubleup(l1),output);
 
 
   return 1;
