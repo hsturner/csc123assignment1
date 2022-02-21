@@ -85,19 +85,24 @@ list foreach (list m, actionon f)
   list inner(list m, list stack)
   {
     if(m=NIL) return stack;
-    else return inner(cdr(m), cons(f(car(m)),stack));
+    else
+    {
+      f(car(m));
+      return foreach(cdr(m),f);
+    }
   }
 
-  return inner(m,Nil);
+  return inner(m,NIL);
 }
 
-int main (int argc, char * argv[]){
-
+int main ()
+{
   list l = cons(1,cons(2,cons(3,NIL)));
-
-  doubleup(l);
-  
+  list l1 = cons(1,cons(2,cons(3,NIL)));
   foreach(l,output);
+  doubleup(l1);
+
+
 
 
 
