@@ -37,7 +37,25 @@ int cadr(list m) { return m->next->item; } // second item
 list cddr(list m) { return m->next->next; }
 
 
+list reverse(list m)
+{
+  // need a stack, initially null
+  list irev(list m, list stack)
+  {
+    if (m==NIL) return stack; else return irev(cdr(m), cons(car(m),stack));
+  }
+  return irev(m,NIL);
+}
 
+list map(fun f, list m)
+{
+  list imap(list m, list stack)
+  {
+    if (m==NIL) return stack;
+    else return imap(cdr(m), cons(f(car(m)),stack));
+  }
+  return reverse(imap(m,NIL));
+}
 
 int main (int argc, char * argv[]){
 
