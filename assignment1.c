@@ -64,7 +64,7 @@ list doubleup(fun f, list m)
   list inner(list m, int stack)
   {
     if(m==NIL) return stack;
-    else return cons(car(m),cons(car(m),inner(cdr(m))));
+    else return cons(car(m),cons(car(m),inner(cdr(m),stack)));
   }
   return doubleup(inner(m,NIL));
 }
