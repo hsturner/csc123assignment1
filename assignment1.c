@@ -73,7 +73,10 @@ list doubleup(fun f, list m)
   return inner(m,NIL);
 }
 
-
+void output(int x)
+{
+  printf("%d",x);
+}
 
 //problem 2 
 
@@ -90,7 +93,8 @@ list foreach (list m, actionon f)
 
 int main (int argc, char * argv[]){
 
-  list l = 
+  list l = cons(1,cons(2,cons(3,NIL)));
+  foreach(l,output);
 
 
 
