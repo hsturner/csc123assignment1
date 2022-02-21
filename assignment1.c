@@ -63,7 +63,7 @@ list map(fun f, list m)
 
 
 //problem 1 - doubleup 
-list doubleup(fun f, list m)
+list doubleup(list m)
 {
   list inner(list m, int stack)
   {
@@ -94,6 +94,9 @@ list foreach (list m, actionon f)
 int main (int argc, char * argv[]){
 
   list l = cons(1,cons(2,cons(3,NIL)));
+
+  doubleup(l);
+  
   foreach(l,output);
 
 
