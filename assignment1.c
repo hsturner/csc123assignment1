@@ -42,7 +42,8 @@ list reverse(list m)
   // need a stack, initially null
   list irev(list m, list stack)
   {
-    if (m==NIL) return stack; else return irev(cdr(m), cons(car(m),stack));
+    if (m==NIL) return stack; 
+    else return irev(cdr(m), cons(car(m),stack));
   }
   return irev(m,NIL);
 }
@@ -55,6 +56,17 @@ list map(fun f, list m)
     else return imap(cdr(m), cons(f(car(m)),stack));
   }
   return reverse(imap(m,NIL));
+} 
+
+
+list doubleup(fun f, list m)
+{
+  list inner(list m, int stack)
+  {
+    if(m==NIL) return stack;
+    else return cons(car(m),cons(car(m),inner(cdr(m))));
+  }
+  return doubleup(inner(m,NIL));
 }
 
 int main (int argc, char * argv[]){
