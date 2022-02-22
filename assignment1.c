@@ -108,6 +108,10 @@ int isone (int x){
   else return 0;
 }
 
+int exists (int x){
+  if(x>0) return 1;
+  else return 0;
+}
 
 int howmany(predicate p, list m)
 {
@@ -119,6 +123,20 @@ int howmany(predicate p, list m)
   }
 
   return innermany(m,0);
+}
+
+
+//question 5
+
+list filter(predicate p, list m)
+{
+  list innerfilter(list m, list stack)
+  {
+    if(m==NIL) return stack;
+    else if (p(car(m))) return innerfilter(cdr(m),cons(car(m),stack));
+    else return innerfilter(cdr(m),stack);
+  }
+  return reverse(innerfilter(m,NIL));
 }
 
 int main ()
@@ -145,6 +163,8 @@ int main ()
 */
 
   printf("how many result: %d\n",howmany(isone,l));
+
+  foreach(filter(exists,l1),output);
 
 
 
