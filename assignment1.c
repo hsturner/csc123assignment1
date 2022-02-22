@@ -105,6 +105,7 @@ void printlist (list m)
 
 int isone (int x){
   if (x==1) return 1;
+  else return 0;
 }
 
 
@@ -114,7 +115,7 @@ int howmany(predicate p, list m)
   {
     if(m==NIL) return accumulator;
     else if (p(car(m))) return innermany(cdr(m),accumulator+1);
-    else return inner(cdr(m),accumulator);
+    else return innermany(cdr(m),accumulator);
   }
 
   return innermany(m,0);
