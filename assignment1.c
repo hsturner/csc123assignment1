@@ -94,6 +94,13 @@ list foreach (list m, actionon f)
   }
 }
 
+//question 3 
+
+void printlist (list m)
+{
+  foreach(m,output);
+}
+
 int main ()
 {
 
@@ -102,8 +109,18 @@ int main ()
 
   //printf("%d",car(l));
   list l1 = cons(1,cons(2,cons(3,NIL)));
+
+  list l2 = cons(2,cons(5,cons(7,NIL)));
+  
+  //question 2
   foreach(l,output);
+  
+  //question 1 
   foreach(doubleup(l1),output);
+
+  //question 3 
+
+  printlist(l2);
 
 
   return 1;
