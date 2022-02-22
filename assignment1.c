@@ -101,6 +101,25 @@ void printlist (list m)
   foreach(m,output);
 }
 
+//question 4
+
+int isone (int x){
+  if (x==1) return 1;
+}
+
+
+int howmany(predicate p, list m)
+{
+  int innermany(list m, int accumulator)
+  {
+    if(m==NIL) return accumulator;
+    else if (p(car(m))) return innermany(cdr(m),accumulator+1);
+    else return inner(cdr(m),accumulator);
+  }
+
+  return innermany(m,0);
+}
+
 int main ()
 {
 
@@ -112,15 +131,20 @@ int main ()
 
   list l2 = cons(2,cons(5,cons(7,NIL)));
   
-  //question 2
+  /*//question 2
   foreach(l,output);
-  
-  //question 1 
-  foreach(doubleup(l1),output);
+  */
 
-  //question 3 
+  /*//question 1 
+  foreach(doubleup(l1),output);
+*/
+  /*//question 3 
 
   printlist(l2);
+*/
+
+  printf("how many result: %d\n",howmany(isone,l));
+
 
 
   return 1;
