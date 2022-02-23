@@ -143,15 +143,24 @@ list filter(predicate p, list m)
 list intersect(list m, list n)
 {
 
+    int ismatch(int x, int y)
+    {
+        if x==y return 1;
+        else return 0;
+    }
+
+
     list iintersect(list m,list n, list stack)
     {
         if(m==NIL | n==NIL) return stack;
-        else if(car(m)==car(n))
-        {
-            return iintersect(cdr(m),cdr(n),cons(car(m),stack));
-        }
-        else return iintersect(m,cdr(n),stack);
+
+
+
+        return iintersect(cdr(m),n,cons(foreach(n,filter(ismatch,n)),stack));
     }
+
+    printf("matching elements: \n");
+    return reverse(iintersect(m, n, NIL));
 }
 
 int main ()
@@ -180,6 +189,10 @@ int main ()
   printf("how many result: %d\n",howmany(isone,l));
 
   foreach(filter(exists,l1),output);
+
+
+  printf("testing intersect: \n");
+  foreach(intersect(l,l2),output);
 
 
 
