@@ -139,6 +139,21 @@ list filter(predicate p, list m)
   return reverse(innerfilter(m,NIL));
 }
 
+//question 6
+list intersect(list m, list n)
+{
+
+    list iintersect(list m,list n, list stack)
+    {
+        if(m==NIL | n==NIL) return stack;
+        else if(car(m)==car(n))
+        {
+            return iintersect(cdr(m),cdr(n),cons(car(m),stack));
+        }
+        else return iintersect(m,cdr(n),stack);
+    }
+}
+
 int main ()
 {
 
