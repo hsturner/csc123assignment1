@@ -140,39 +140,104 @@ list filter(predicate p, list m)
 }
 
 //question 6
+list nfilter(int x, list m)
+{
+    list ninnerfilter(list m, int y, list stack)
+    {
+        printf("entering ninnerfilter:\n");
+        printf("car(m) is: %d\n",y);
+        printf("list: (expected 555):\n");
+        foreach(m,output);
+        printf("ninner filter stack: (expected NIL)\n");
+        foreach(stack,output);
+
+        if(m==NIL){
+            printf("exiting ninner filter\n");
+            return stack;
+        }
+        else if (car(m)==y) return ninnerfilter(cdr(m),y,cons(car(m),stack));
+
+        else return ninnerfilter(cdr(m),y,stack);
+    }
+    return ninnerfilter(m,x, NIL);
+}
+
 list intersect(list m, list n)
 {
 
-    int ismatch(int x, int y)
+
+
+    //list iintersect(list m,list n, list ncopy,list stack)
+    list iintersect(list m,list n,list stack)
     {
-        if x==y return 1;
-        else return 0;
+        printf("main loop stack: (Expected 2 then 3)\n");
+        foreach(stack,output);
+        if(m==NIL) return stack;
+
+        else if (car(m) == car(n)) return iintersect(cdr(m),cdr(n),cons(car(m),stack));//first elements match
+        else return()
+        /*
+        else if (n==NIL && cdr(m)==NIL) return iintersect(m,ncopy,n,stack);
+        else if(n==NIL && cdr(m)!=NIL) return iintersect(cdr(m),ncopy,n,stack);
+
+        else if(n==NIL && ncopy==NIL) return stack;
+
+
+        else return iintersect(m,cdr(n),cons(car(n),ncopy),stack);
+        else return iintersect(m,cons(cdr(n),car(n)),stack);
+*/
+
+
+        else
+        {
+            (nfilter(car(m),n))))
+
+            printf("value of list check: %d (should be 2 then 3)\n",check);
+            if(check !=NIL) return iintersect(cdr(m),n,cons(check,stack));
+            else return iintersect(cdr(m),n,stack);
+        }
+
+        //is car(m) == car(n)
+            //return with intersection passed as stack
+        //else return
     }
 
-
-    list iintersect(list m,list n, list stack)
-    {
-        if(m==NIL | n==NIL) return stack;
-
-
-
-        return iintersect(cdr(m),n,cons(foreach(n,filter(ismatch,n)),stack));
-    }
-
-    printf("matching elements: \n");
-    return reverse(iintersect(m, n, NIL));
+    //printf("matching elements: \n");
+    return iintersect(m, n,NIL);
 }
+
+
+//question 7
+
+BOOL sublist (list m, list n)
+{
+
+    if(m==NIL || n==NIL)
+}
+
+//question 8
+
+
 
 int main ()
 {
 
   printf("entering main\n");
   list l = cons(1,cons(2,cons(3,NIL)));
+  list ltest = cons(5,cons(3,cons(2,NIL)));
 
   //printf("%d",car(l));
   list l1 = cons(1,cons(2,cons(3,NIL)));
 
   list l2 = cons(2,cons(5,cons(7,NIL)));
+
+  list l3 = cons(1,cons(2,cons(3,cons(4,NIL))));
+  //list l6 = cdr(l3);
+  //list l7 = car(l3);
+  //list l4 = cons(l6,l7);
+
+  printf("testing nil car");
+  foreach(l3,output);
   
   /*//question 2
   foreach(l,output);
@@ -186,14 +251,14 @@ int main ()
   printlist(l2);
 */
 
-  printf("how many result: %d\n",howmany(isone,l));
+  //printf("how many result: %d\n",howmany(isone,l));
 
-  foreach(filter(exists,l1),output);
+  //foreach(filter(exists,l1),output);
 
 
   printf("testing intersect: \n");
-  foreach(intersect(l,l2),output);
-
+  foreach(intersect(l,ltest),output);
+  foreach(nfilter(1,l),output);
 
 
   return 1;
