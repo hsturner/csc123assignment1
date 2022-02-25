@@ -182,7 +182,6 @@ list intersect(list m, list n)
         if(m==NIL) return stack;
 
         else if (car(m) == car(n)) return iintersect(cdr(m),cdr(n),cons(car(m),stack));//first elements match
-        else return()
         /*
         else if (n==NIL && cdr(m)==NIL) return iintersect(m,ncopy,n,stack);
         else if(n==NIL && cdr(m)!=NIL) return iintersect(cdr(m),ncopy,n,stack);
@@ -197,10 +196,14 @@ list intersect(list m, list n)
 
         else
         {
-            (nfilter(car(m),n))))
 
-            printf("value of list check: %d (should be 2 then 3)\n",check);
-            if(check !=NIL) return iintersect(cdr(m),n,cons(check,stack));
+
+            list check = nfilter(car(m),n);
+            if(car(check)!=NIL){
+
+            //printf("value of list check: %d (should be 2 then 3)\n",check);
+            return iintersect(cdr(m),n,cons(car(check),stack));
+            }
             else return iintersect(cdr(m),n,stack);
         }
 
@@ -218,17 +221,30 @@ list intersect(list m, list n)
 
 BOOL sublist (list m, list n)
 {
+    //intersection with no left over
 
-    if(m==NIL || n==NIL)
+   // if(m==NIL || n==NIL)
+
 }
 
+
 //question 8
+int fold(list m, binop op)
+{
+    int ifold(list m, int ax)
+    {
+        if (cdr(m)==NIL) return car(m);
+        else return ifold(car(m),op(cdr(m),ax));
+    }
+    return ifold(m,cddr(m));
+}
 
-
+int subtract(int x, int y) { return x-y; }
 
 int main ()
 {
-
+    list m = cons(5,cons(3,cons(2,NIL)));
+    printf("result of fold %d: \n",fold(m, subtract));
   printf("entering main\n");
   list l = cons(1,cons(2,cons(3,NIL)));
   list ltest = cons(5,cons(3,cons(2,NIL)));
